@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.tscn"
-Character1="*res://Character1.tscn"
+Character1="*res://Character1.gd"
 
 [display]
 

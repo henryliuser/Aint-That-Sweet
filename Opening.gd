@@ -32,6 +32,6 @@ func _process(delta):
 					actualCounter += 1
 					text1.text = ""
 		else:
-			get_tree().change_scene("")
+			get_tree().change_scene("res://menu.tscn")
 	frames += 1
 
