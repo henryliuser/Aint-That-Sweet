@@ -19,7 +19,7 @@ func _process(delta):
 		var enemy = load(spawned[obstacleNum]).instance()
 		enemy.global_position.x = 1919
 		if(obstacleNum < 2):
-			enemy.global_position.y = 950
+			enemy.global_position.y = 900
 		else:
 			enemy.global_position.y = randi()%500 + 200
 		if obstacleNum > 0:
