@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Falling stuff.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Falling stuff" type="RigidBody2D"]
+position = Vector2( 851.431, -291.399 )
+collision_layer = 2
+collision_mask = 2
+mass = 10.0
+gravity_scale = 6.0
+angular_velocity = 10.0
+script = ExtResource( 1 )
+
+[node name="icon" type="Sprite" parent="."]
+modulate = Color( 0.929412, 0.0627451, 0.0627451, 1 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 3, 3 )
+shape = SubResource( 1 )

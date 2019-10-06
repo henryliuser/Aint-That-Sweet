@@ -1,103 +1,46 @@
 extends KinematicBody2D
 
-var velocity = Vector2(0,0)
-export var acceleration = 70
-export var jumpSpeed = 800
-var speedMultiplier = 1
-var modCounter = 11
-export var gravity = 35
-export var maxAirVelocity = Vector2(450,1500)
-export var maxVelocity = Vector2(400, 1500)
-export var totalJumps = 2
-
-const iframes = 60
-var iTimer = 0
-var invuln = false
-
-var grounded = true
-var midairJumpsLeft = totalJumps - 1
-var anim
+var lastVel = Vector2()
+var motion = Vector2(0,30)
+var lerpWeight = 0.12
+var acceleration = 25
+var rot = 0
+var maxSpeed = 700
 
 func _ready():
-	gravity = 35
-	anim = $AnimatedSprite
-	
+	randomize()
+
 func _physics_process(delta):
-	if position.y > 1200:
-		getHurt(5000)
-	imposeGravity()
-	calculateJump()
-	checkInvuln()
-	movement()
-	animate()
-	velocity = move_and_slide(velocity*speedMultiplier, Vector2(0,-1))
+	print(motion.x)
+	var right = Input.is_action_pressed("ui_right")
+	var left = Input.is_action_pressed("ui_left")
 	
-func checkInvuln():
-	if invuln:
-		iTimer += 1
-		if iTimer > iframes:
-			invuln = false
-			iTimer = 0
-
-func imposeGravity():
-	velocity.y += gravity
-
-func calculateJump():
-	if is_on_floor():
-		grounded = true
-		midairJumpsLeft = totalJumps-1
-#	if is_on_ceiling():
-#		velocity.y = 10
-	else: 
-		grounded = false
-
-func parseInputs(lerpWeight):
-	if Input.is_action_just_pressed("ui_up"):
-		if midairJumpsLeft > 0 && not grounded:
-			midairJumpsLeft -= 1
-			velocity.y = -jumpSpeed 
-		elif grounded:
-			velocity.y = -jumpSpeed
-
-	var crouch = Input.is_action_just_pressed("ui_down")
-	
-	if crouch:
-		anim.play("crouch")
-	
-	var maxSpeeds
-	if grounded: maxSpeeds = maxVelocity
-	else: maxSpeeds = maxAirVelocity 
-	
-	velocity.y = min(velocity.y, maxSpeeds.y)
-	
-func movement():
-	parseInputs(0.5)
-	if abs(velocity.x) <= 1:
-		velocity.x = 0
-	if abs(velocity.y) <= 1:
-		velocity.y = 0
-
-func getHurt(dmg):
-	modulate = Color(0.5,0,1,0.5)
-	midairJumpsLeft = 0
-	invuln = true
-	modCounter = 0
-	
-func animate():
-	if velocity.y < 0:
-		anim.play("jump")
-	elif velocity.y > 0:
-		anim.play("fall")
-	elif Input.is_action_pressed("player_crouch"):
-		anim.play("crouch")
+	if left and not right:
+		motion += Vector2(-acceleration,0)
+		rotation -= rot
+	elif right and not left:
+		motion += Vector2(acceleration,0)
+		rotation += rot
 	else:
-		anim.play("walk")
-		
-	modCounter += 1
-	if modCounter > 10:
-		modulate = Color(1,1,1,1)
-		
+		motion.x = lerp(motion.x, 0, lerpWeight)
+	if abs(motion.x) < 1:
+		motion.x = 0
+	if abs(motion.x) > maxSpeed:
+		motion.x = motion.x/abs(motion.x) * maxSpeed
+	move_and_slide(motion, Vector2(0,-1))
+	
+	if Input.is_action_just_pressed("ui_accept"):
+#		get_node("../club").modulate = Color(randi()%5 ,randi()%5,randi()%5 )
+		get_node("../club").modulate = Color(0.8,0.5,0.1)
+		rot += 0.02
+		maxSpeed += 300
+		acceleration /= 1.06
+		lerpWeight -= 0.02
+		if lerpWeight < 0.03:
+			lerpWeight = 0.03
 
 
-func _on_Hitbox_area_entered(area):
-	getHurt(10)
+
+func _on_Area2D_body_entered(body):
+	motion.x *= -0.5
+
