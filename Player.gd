@@ -13,6 +13,7 @@ var hitstun = 20
 
 func _ready():
 	randomize()
+	Global.curse.visible = false
 
 func _physics_process(delta):
 	print(motion.x)
@@ -60,8 +61,14 @@ func hurt():
 	Global.updateHealth(2)
 	get_node("../Ground/Label3").text = "HP: " + str(hp)
 	if hp <= 0:
-		Character1.updateAttraction(get_node("../Spawner").score/100)
-		get_tree().change_scene("res://menu.tscn")
+		var s = int(get_node("../Spawner").score)
+		if s < 0:
+			s = 0
+		Summary.updateLabel(1,s, int(s/100))
+		Summary.visible = true
+		Global.curse.visible = true
+		get_tree().change_scene("res://lol.tscn")
+		
 		
 	hitstunTimer = 1
 	modulate = Color(1,0,0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://LibraryGame.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/hangman.png" type="Texture" id=2]
@@ -9,8 +9,18 @@
 size = 35
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 35
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=2]
-size = 30
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 35
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="LibraryGame" type="Node2D"]
@@ -18,8 +28,8 @@ script = ExtResource( 1 )
 
 [node name="hangman" type="Sprite" parent="."]
 modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
-position = Vector2( 944.661, 716.271 )
-scale = Vector2( 0.647432, 0.772706 )
+position = Vector2( 965.03, 712.52 )
+scale = Vector2( 0.669637, 0.772706 )
 texture = ExtResource( 2 )
 
 [node name="UserInput" type="TextEdit" parent="."]
@@ -31,25 +41,42 @@ custom_fonts/font = SubResource( 1 )
 
 [node name="CopyText" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 156.19
-margin_top = 132.502
-margin_right = 1198.19
-margin_bottom = 408.502
-custom_fonts/normal_font = SubResource( 2 )
+margin_left = 12.0
+margin_top = 155.0
+margin_right = 560.0
+margin_bottom = 1031.0
+custom_fonts/normal_font = SubResource( 4 )
 
 [node name="CopiedText" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 842.55
-margin_top = 408.105
-margin_right = 1884.55
-margin_bottom = 684.105
+margin_left = 620.0
+margin_top = 169.0
+margin_right = 1503.0
+margin_bottom = 644.0
 custom_fonts/normal_font = SubResource( 2 )
 
 [node name="CurrWord" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 147.851
-margin_top = 760.104
-margin_right = 784.851
-margin_bottom = 1036.1
+margin_left = 672.0
+margin_top = 678.0
+margin_right = 1309.0
+margin_bottom = 721.0
 custom_fonts/normal_font = SubResource( 2 )
 text = "type "
+scroll_active = false
+
+[node name="Score" type="Label" parent="."]
+margin_left = 710.0
+margin_top = 970.0
+margin_right = 1110.0
+margin_bottom = 1012.0
+custom_fonts/font = SubResource( 3 )
+text = "Score: 0"
+
+[node name="Time" type="Label" parent="."]
+margin_left = 710.0
+margin_top = 1020.0
+margin_right = 1110.0
+margin_bottom = 1062.0
+custom_fonts/font = SubResource( 3 )
+text = "Time: 0"

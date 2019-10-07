@@ -21,6 +21,7 @@ var anim
 func _ready():
 	gravity = 35
 	anim = $AnimatedSprite
+	Global.curse.visible = false
 
 func _physics_process(delta):
 	if position.y > 1200:
@@ -52,7 +53,7 @@ func calculateJump():
 		grounded = false
 
 func parseInputs(lerpWeight):
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_accept"):
 		if midairJumpsLeft > 0 && not grounded:
 			midairJumpsLeft -= 1
 			velocity.y = -jumpSpeed
@@ -82,6 +83,10 @@ func getHurt(dmg):
 	midairJumpsLeft = 0
 	invuln = true
 	modCounter = 0
+	get_node("../Info").updateHP(-1)
+	Global.updateHealth(-2)
+	get_node("../Info").updateScore(-320)
+	
 
 func animate():
 	if velocity.y < 0:

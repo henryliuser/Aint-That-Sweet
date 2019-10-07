@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Global.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/SpecialElite copy.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Graphics/curse.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/curse2.png" type="Texture" id=4]
+[ext_resource path="res://Cursor.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
 font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "hover",
+"speed": 5.0
+} ]
 
 [node name="Global" type="Control"]
 anchor_right = 1.0
@@ -37,12 +53,18 @@ custom_fonts/normal_font = SubResource( 1 )
 text = "$1000.00"
 
 [node name="weekLabel" type="RichTextLabel" parent="HUD/CanvasLayer"]
-margin_left = 833.452
+margin_left = 880.0
 margin_top = 40.0
-margin_right = 1083.45
-margin_bottom = 110.0
+margin_right = 1040.0
+margin_bottom = 105.0
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center] WEEK 1 [/center]"
-text = " WEEK 1 "
+bbcode_text = "WEEK 1"
+text = "WEEK 1"
+
+[node name="Cursor" type="AnimatedSprite" parent="HUD/CanvasLayer"]
+position = Vector2( 613.334, 324.878 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 2 )
+script = ExtResource( 5 )

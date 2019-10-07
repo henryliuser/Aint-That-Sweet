@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Summary.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/room.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/textBox.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/SpecialElite copy.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+extra_spacing_top = 3
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 65
+font_data = ExtResource( 4 )
+
+[node name="Summary" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="room" type="Sprite" parent="."]
+modulate = Color( 0.819608, 0.819608, 0.819608, 1 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.65, 0.6 )
+texture = ExtResource( 2 )
+
+[node name="textBox" type="Sprite" parent="."]
+position = Vector2( 957.701, 540 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 437.047
+margin_top = 346.788
+margin_right = 1087.05
+margin_bottom = 813.788
+custom_fonts/font = SubResource( 1 )
+text = "Score: 100000
+Attraction Change: -99
+Income Change: -10000
+New Income: 10000
+
+Pre-Game Total:              9999
++ Total Support:              9999
+- Monthly Expenses:       5000
+--------------------------
+Balance for Next Week:   20000"
+
+[node name="Label3" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1119.37
+margin_top = 470.847
+margin_right = 1769.37
+margin_bottom = 937.847
+custom_fonts/font = SubResource( 1 )
+text = "Enter to Continue"
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 441.368
+margin_top = 242.753
+margin_right = 966.368
+margin_bottom = 308.753
+custom_fonts/font = SubResource( 2 )
+text = "Weekly Summary"

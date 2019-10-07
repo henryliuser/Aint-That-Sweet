@@ -3,8 +3,8 @@ extends Control
 onready var text1 = $text1
 var t1 = ["The year is 2119. 100 years have passed since the legendary area 51 raid... aliens have fully integrated into society.",
 		  "You are a human, an 18-year old University Student in the United States. Your parents have kicked you out of the house. You are on your own.",
-		  "Education in America still costs a fortune.",
-		  "Probability of survival: 17%",
+		  "Education in America still costs a fortune and you are starting with nothing.",
+		  "Probability of survival: 7%",
 		  "Unless..."
 		 ]
 var c1 = 0
@@ -17,6 +17,7 @@ func _ready():
 	Character1.visible = false
 	Character2.visible = false
 	Character3.visible = false
+	Global.curse.visible = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
@@ -36,6 +37,7 @@ func _process(delta):
 					actualCounter += 1
 					text1.text = ""
 		else:
+			Global.curse.visible = true
 			get_tree().change_scene("res://menu.tscn")
 	frames += 1
 

@@ -90,10 +90,6 @@ var lines = [
 
 ]
 
-
-
-
-
 #               name   occupation  netWorth  origin  funFact1  funFact2  nickname  badThing1 badThing2 
 var infoBool = [false,   false,     false,   false,   false,    false,    false,    false,    false]
 var infoValues = ["Brock Lee",
@@ -111,13 +107,29 @@ var infoLabels = ["Name: ", "Occupation: ", "Net Worth: ", "Place of Origin: ", 
 
 func _ready():
 	$TextBox.changeText(lines[0][0][1])
+	$TextBox.changeName(infoValues[0])
 
 func showInfo():
+	if bigProgress == 1:
+		infoBool[0] = true
+		infoBool[1] = true
+		infoBool[7] = true
+		infoBool[8] = true
+	if bigProgress == 2:
+		infoBool[3] = true
+		infoBool[6] = true
+	if bigProgress == 3:
+		infoBool[1] = true
+		infoBool[2] = true
+	if bigProgress == 4:
+		infoBool[4] = true
+		infoBool[5] = true
+		infoBool[6] = true
 	info.visible = true
 	infoLabel2.visible = false
 	infoLabel.visible = true
 	var s = ""
-	for v in range(0,8):
+	for v in range(0,9):
 		s += infoLabels[v] 
 		if infoBool[v]:
 			s += infoValues[v]
@@ -128,7 +140,9 @@ func showInfo():
 
 func updateAttraction(var u):
 	attractionToPlayer += u
-	support = attractionToPlayer * attractionToPlayer * 0.5637
+	Global.income -= support
+	support = attractionToPlayer * attractionToPlayer * 0.4637
+	Global.income += support
 
 
 func nextPage():
@@ -138,6 +152,7 @@ func nextPage():
 
 func hideInfo():
 	info.visible = false
+	Global.curse.play("default")
 
 
 onready var hisTurn = true 
@@ -150,13 +165,29 @@ func _process(delta):
 		if not hisTurn and Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 			dialogo()
 
+func reset():
+	progress = 0
+	bigProgress = 0
+	attractionToPlayer = 0
+	support = 0
+	hisTurn = true
+	$TextBox.changeText(lines[0][0][1])
+	$TextBox.changeName(infoValues[0])
+	infoBool = [false,   false,     false,   false,   false,    false,    false,    false,    false]
+	
 
 func dialogo():
 	progress += 1
 	if progress >= len(lines[bigProgress]):
 		bigProgress += 1
+		progress = 0
 		visible = false
-		get_tree().change_scene("res://ClubGame.tscn")
+		hisTurn = true
+		if bigProgress < len(lines):
+			$TextBox.changeText(lines[bigProgress][progress][1])
+			$TextBox.changeName(infoValues[0])
+			anim.play(Global.legend[lines[bigProgress][progress][0]])
+		get_tree().change_scene("res://LibraryGame.tscn")
 	else:
 		var arr = lines[bigProgress][progress]
 		if hisTurn: #sets up your turn 
@@ -169,3 +200,16 @@ func dialogo():
 			$TextBox.changeText(arr[1])
 			$TextBox.changeName(infoValues[0])
 			anim.play(Global.legend[arr[0]-1]) 
+
+func _on_Button_mouse_entered():
+	Global.curse.play("hover")
+func _on_Button_mouse_exited():
+	Global.curse.play("default")
+func _on_Next_mouse_entered():
+	Global.curse.play("hover")
+func _on_Hide_mouse_entered():
+	Global.curse.play("hover")
+func _on_Next_mouse_exited():
+	Global.curse.play("default")
+func _on_Hide_mouse_exited():
+	Global.curse.play("default")

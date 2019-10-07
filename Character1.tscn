@@ -3,8 +3,8 @@
 [ext_resource path="res://Character1.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/club.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/2 blush.png" type="Texture" id=3]
-[ext_resource path="res://Graphics/2 nuetral.png" type="Texture" id=4]
-[ext_resource path="res://Graphics/2 suprised.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/2 suprised.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/2 nuetral.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/2 angry.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/player.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/2 happy.png" type="Texture" id=8]
@@ -21,12 +21,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "neutral",
+"name": "surprised",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "surprised",
+"name": "neutral",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
@@ -78,12 +78,11 @@ texture = ExtResource( 9 )
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 150.0
-margin_top = 400.0
-margin_right = 470.0
+margin_top = 240.0
+margin_right = 560.0
 margin_bottom = 720.0
 
 [node name="Info" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 
 [node name="box2" type="Sprite" parent="Info"]
@@ -140,6 +139,12 @@ margin_bottom = 826.0
 rect_scale = Vector2( 4, 3 )
 custom_fonts/font = SubResource( 3 )
 text = "X"
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="showInfo"]
+[connection signal="mouse_entered" from="Info/Next" to="." method="_on_Next_mouse_entered"]
+[connection signal="mouse_exited" from="Info/Next" to="." method="_on_Next_mouse_exited"]
 [connection signal="pressed" from="Info/Next" to="." method="nextPage"]
+[connection signal="mouse_entered" from="Info/Hide" to="." method="_on_Hide_mouse_entered"]
+[connection signal="mouse_exited" from="Info/Hide" to="." method="_on_Hide_mouse_exited"]
 [connection signal="pressed" from="Info/Hide" to="." method="hideInfo"]
