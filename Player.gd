@@ -1,4 +1,5 @@
 extends KinematicBody2D
+
 var lastVel = Vector2()
 var motion = Vector2(0,30)
 var lerpWeight = 0.12
@@ -71,3 +72,4 @@ func hurt():
 func _on_Area2D_body_entered(body):
 	print(body)
 	motion.x *= -0.5
+
