@@ -17,6 +17,8 @@ func _ready():
 	file.close()
 	allWords = copyText.split(" ")
 	$CopyText.text = copyText
+	currentWord = allWords[index]
+	$CurrWord.text = "Type " + currentWord
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -24,11 +26,13 @@ func _process(delta):
 		inputWord = $UserInput.text
 		copiedText += inputWord
 		copiedText += " "
+		$CopiedText.text = copiedText
 		var correctLength = currentWord.length()
 		var userLength = inputWord.length()
 		score += currentWord.similarity(inputWord)
 		index += 1
 		print(score)
 		$UserInput.text = ""
+		$CurrWord.text = "Type" + currentWord
 		
 	

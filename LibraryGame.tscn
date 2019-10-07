@@ -23,8 +23,23 @@ margin_bottom = 893.809
 custom_fonts/font = SubResource( 1 )
 
 [node name="CopyText" type="RichTextLabel" parent="."]
-margin_left = 845.199
-margin_top = 225.253
-margin_right = 1887.2
-margin_bottom = 501.253
+margin_left = 156.19
+margin_top = 132.502
+margin_right = 1198.19
+margin_bottom = 408.502
 custom_fonts/normal_font = SubResource( 2 )
+
+[node name="CopiedText" type="RichTextLabel" parent="."]
+margin_left = 842.55
+margin_top = 408.105
+margin_right = 1884.55
+margin_bottom = 684.105
+custom_fonts/normal_font = SubResource( 2 )
+
+[node name="CurrWord" type="RichTextLabel" parent="."]
+margin_left = 147.851
+margin_top = 760.104
+margin_right = 784.851
+margin_bottom = 1036.1
+custom_fonts/normal_font = SubResource( 2 )
+text = "type "
