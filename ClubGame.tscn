@@ -1,18 +1,19 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Graphics/club.png" type="Texture" id=1]
 [ext_resource path="res://spawner.gd" type="Script" id=2]
-[ext_resource path="res://box.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/joystix monospace copy 2.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Player.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Ground.gd" type="Script" id=3]
+[ext_resource path="res://box.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/joystix monospace copy 2.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Player.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 32 )
@@ -23,8 +24,8 @@ extents = Vector2( 32, 32 )
 [node name="ClubGame" type="Node2D"]
 
 [node name="club" type="Sprite" parent="."]
-position = Vector2( 957.654, 543.851 )
-scale = Vector2( 0.648626, 0.597179 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.65, 0.6 )
 texture = ExtResource( 1 )
 
 [node name="Spawner" type="Node2D" parent="."]
@@ -32,15 +33,24 @@ script = ExtResource( 2 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 935.897, 1026.2 )
+script = ExtResource( 3 )
 
 [node name="box" type="Sprite" parent="Ground"]
 scale = Vector2( 41, 3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 2.73682, 0 )
 scale = Vector2( 41, 3 )
 shape = SubResource( 2 )
+
+[node name="Label4" type="Label" parent="Ground"]
+margin_left = 641.032
+margin_top = 14.489
+margin_right = 1466.03
+margin_bottom = 128.489
+custom_fonts/font = SubResource( 6 )
+text = "BAC: 0.0"
 
 [node name="Label" type="Label" parent="Ground"]
 margin_left = -398.621
@@ -52,13 +62,21 @@ text = "Arrow Keys to Move
 
 SpaceBar - $10 Alcohol multiplier"
 
-[node name="Label2" type="Label" parent="Ground"]
-margin_left = 649.772
-margin_top = -68.3622
-margin_right = 1474.77
-margin_bottom = 45.6378
+[node name="Score" type="Label" parent="Ground"]
+margin_left = 644.536
+margin_top = -73.5975
+margin_right = 1469.54
+margin_bottom = 40.4025
 custom_fonts/font = SubResource( 6 )
-text = "SCore: 1000"
+text = "SCore: 0"
+
+[node name="Label3" type="Label" parent="Ground"]
+margin_left = 643.49
+margin_top = -31.4884
+margin_right = 1468.49
+margin_bottom = 82.5116
+custom_fonts/font = SubResource( 6 )
+text = "HP: 3"
 
 [node name="Ground2" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -68,7 +86,7 @@ constant_linear_velocity = Vector2( 1000, 0 )
 
 [node name="box" type="Sprite" parent="Ground2"]
 scale = Vector2( 41, 3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
 position = Vector2( 2.73682, 0 )
@@ -91,7 +109,7 @@ constant_linear_velocity = Vector2( 1000, 0 )
 
 [node name="box" type="Sprite" parent="Ground3"]
 scale = Vector2( 41, 3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
 position = Vector2( 2.73682, 0 )
@@ -107,14 +125,13 @@ collision_mask = 2
 shape = SubResource( 5 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 754.772, 865.777 )
 collision_layer = 7
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="icon" type="Sprite" parent="Player"]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2( 2, 2 )
