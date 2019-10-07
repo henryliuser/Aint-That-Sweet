@@ -13,10 +13,14 @@ var actualCounter = 0
 var frames = 0
 
 func _ready():
-	Global.HUD.visible = false
+	Global.hideHUD()
 	Character1.visible = false
+	Character2.visible = false
+	Character3.visible = false
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_down"):
+		actualCounter = 5
 	if frames%3 == 0:
 		if actualCounter < len(t1):
 			if w1 == 0:

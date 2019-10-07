@@ -1,16 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Obstacle.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/bench.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.5715, 11.4113 )
 
 [node name="Bench" type="Area2D"]
 position = Vector2( 1919, 0 )
+scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="bench" type="Sprite" parent="."]
+position = Vector2( -9.64453, -19.682 )
+scale = Vector2( 0.0454762, 0.0475235 )
 texture = ExtResource( 2 )

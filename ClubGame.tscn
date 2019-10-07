@@ -8,17 +8,17 @@
 [ext_resource path="res://Player.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 32 )
 
 [node name="ClubGame" type="Node2D"]
@@ -42,14 +42,14 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 2.73682, 0 )
 scale = Vector2( 41, 3 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Label4" type="Label" parent="Ground"]
 margin_left = 641.032
 margin_top = 14.489
 margin_right = 1466.03
 margin_bottom = 128.489
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "BAC: 0.0"
 
 [node name="Label" type="Label" parent="Ground"]
@@ -57,7 +57,7 @@ margin_left = -398.621
 margin_top = -74.3989
 margin_right = 426.379
 margin_bottom = 39.6011
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Arrow Keys to Move
 
 SpaceBar - $10 Alcohol multiplier"
@@ -67,7 +67,7 @@ margin_left = 644.536
 margin_top = -73.5975
 margin_right = 1469.54
 margin_bottom = 40.4025
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "SCore: 0"
 
 [node name="Label3" type="Label" parent="Ground"]
@@ -75,7 +75,7 @@ margin_left = 643.49
 margin_top = -31.4884
 margin_right = 1468.49
 margin_bottom = 82.5116
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "HP: 3"
 
 [node name="Ground2" type="StaticBody2D" parent="."]
@@ -91,7 +91,7 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
 position = Vector2( 2.73682, 0 )
 scale = Vector2( 41, 3 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="Ground2"]
 scale = Vector2( 41, 3.52 )
@@ -99,7 +99,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Ground3" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -114,7 +114,7 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
 position = Vector2( 2.73682, 0 )
 scale = Vector2( 41, 3 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="Ground3"]
 scale = Vector2( 41, 3.52 )
@@ -122,7 +122,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 754.772, 865.777 )
@@ -135,6 +135,6 @@ texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2( 2, 2 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="body_entered" from="Ground2/Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Ground3/Area2D" to="Player" method="_on_Area2D_body_entered"]

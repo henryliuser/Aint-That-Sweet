@@ -4,6 +4,7 @@ onready var infoLabel = $Info/InfoLabel
 onready var infoLabel2 = $Info/InfoLabel2
 onready var info = $Info
 
+var progress = 0
 var attractionToPlayer = 0
 var support = 0.0
 

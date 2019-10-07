@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 var velocity = Vector2(0,0)
 export var acceleration = 70
-export var jumpSpeed = 800
+export var jumpSpeed = 1100
 var speedMultiplier = 1
 var modCounter = 11
-export var gravity = 35
-export var maxAirVelocity = Vector2(450,1500)
+export var gravity = 5
+export var maxAirVelocity = Vector2(450,800)
 export var maxVelocity = Vector2(400, 1500)
 export var totalJumps = 2
 
