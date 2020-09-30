@@ -53,6 +53,9 @@ margin_right = 1466.03
 margin_bottom = 128.489
 custom_fonts/font = SubResource( 2 )
 text = "BAC: 0.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Ground"]
 margin_left = -398.621
@@ -81,7 +84,6 @@ custom_fonts/font = SubResource( 2 )
 text = "HP: 3"
 
 [node name="Ground2" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( -105.597, 476.921 )
 rotation = 1.5708
 constant_linear_velocity = Vector2( 1000, 0 )
@@ -104,7 +106,6 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="Ground3" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 2031.75, 506.001 )
 rotation = 1.5708
 constant_linear_velocity = Vector2( 1000, 0 )

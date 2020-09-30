@@ -11,12 +11,14 @@ var hp = 3
 var hitstunTimer = 0
 var hitstun = 20
 
+onready var bg = get_node("../club")
+
 func _ready():
 	randomize()
 	Global.curse.visible = false
 
+onready var target_mod = bg.modulate
 func _physics_process(delta):
-	print(motion.x)
 	if (hitstunTimer == 0):
 		var right = Input.is_action_pressed("ui_right")
 		var left = Input.is_action_pressed("ui_left")
@@ -40,9 +42,13 @@ func _physics_process(delta):
 			hitstunTimer = 0
 			modulate = Color(1,1,1,1)
 	
+	bg.modulate = lerp(bg.modulate, target_mod, 0.05)
+	print(bg.modulate)
 	if Input.is_action_just_pressed("ui_accept"):
-#		get_node("../club").modulate = Color(randi()%5 ,randi()%5,randi()%5 )
-		get_node("../club").modulate = Color(0.8,0.5,0.1)
+#		bg.modulate = Color(0.8, 0.5, 0.2)
+		target_mod.r -= 0.05
+		target_mod.g -= 0.1
+		target_mod.b -= 0.2
 		get_node("../Spawner").multiplier += 0.2
 		Global.updateMuney(-10)
 		Global.updateHealth(-3)
@@ -53,9 +59,7 @@ func _physics_process(delta):
 		if lerpWeight < 0.03:
 			lerpWeight = 0.03
 			
-	if Input.is_action_just_pressed("ui_cancel"):
-		print("maxSpeed: %s\nacceleration: %s\nlerp: %s"%[maxSpeed, acceleration, lerpWeight])
-
+	
 func hurt():
 	hp -= 1
 	Global.updateHealth(2)
@@ -77,6 +81,5 @@ func hurt():
 	get_node("../Ground/Score").text = "Score: %d"%get_node("../Spawner").score
 		
 func _on_Area2D_body_entered(body):
-	print(body)
 	motion.x *= -0.5
 

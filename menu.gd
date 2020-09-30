@@ -4,7 +4,7 @@ onready var park = $realmenu/Park/Label4
 onready var library = $realmenu/Library/Label5
 func _ready():
 	Global.showHUD()
-	
+	Global.curse.visible = true
 	Character1.visible = false
 	Character2.visible = false
 	Character3.visible = false

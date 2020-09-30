@@ -38,7 +38,6 @@ func _process(delta):
 		var correctLength = currentWord.length()
 		var userLength = inputWord.length()
 		score += currentWord.similarity(inputWord)
-		print(score)
 		$Score.text = "%.2f"%score
 		$UserInput.text = ""
 		index += 1

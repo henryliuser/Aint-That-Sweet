@@ -29,6 +29,9 @@ anchor_bottom = 1.0
 margin_left = -1.5481
 margin_right = -1.5481
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HUD" type="Node2D" parent="."]
 
@@ -62,6 +65,9 @@ custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "WEEK 1"
 text = "WEEK 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Cursor" type="AnimatedSprite" parent="HUD/CanvasLayer"]
 position = Vector2( 613.334, 324.878 )

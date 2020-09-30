@@ -12,7 +12,7 @@ var lines = [
 [
 [1, "Hey girl, I don’t know you, but I want you to know something. I am so goddamn fast"],
 ["1. How fast?\n2. Who are you?"],
-[5, "I’m so glad you asked. Some background information: I was the first ever high school student to run a mile in under 4 minutes. If we were being chased by a bear, me as a 16 year old could have escaped while you were being eaten"],
+[5, "I’m so glad you asked. Some background information: I was the speediest runner in my entire state in high school. I ran a mile in under 4 minutes. If we were being chased by a bear, me as a 16 year old could have escaped while you were being eaten"],
 ["1. Nice\n2. Oh my god can I get your autograph?"],
 [1, "Sorry I can’t hear you over the music. I must go dance now because my incredibly powerful legs cannot stay still for too long"],
 ["*You follow the guy through the crowd, but he is too fast and get lost. It is all you can do to avoid the obstacles falling from the ceiling as you look for him*"]
@@ -21,7 +21,7 @@ var lines = [
 [
 [4, "Oh hey i remember you! You caught up to me!"],
 ["1. You’re not the only fast one here ;)\n2. Maybe I’ll go fast enough to get in front of you"],
-[2, "Ha. That’s funny. The last time someone placed in front of me in a race was the 2019 World Championships, and that was only because I got disqualified. Goddamn referees"],
+[2, "Ha. That’s funny. The last time someone placed in front of me in a race was years ago, and only because I got disqualified. Goddamn referees"],
 ["1. what\n2. Yeah I totally feel you referees suck"],
 [1, "Anyways I gotta dash. See ya around if you get lucky"],
 ["1. Wait what’s your name?\n2. What do you mean lucky???"],
@@ -44,7 +44,7 @@ var lines = [
 ["1. I am at the club at literally the same times you do\n2. Maybe I do but seeing you makes it worth it ;)"],
 [5, "I know, but still. You’re not as fast as me so it costs more to you"],
 ["1. I get it, you’re fast\n2. Are you really even that fast?"],
-[5, "My friends in Norway used to call me rabbit because I was so fast. I am the human embodiment of speed"],
+[5, "My friends in Arkansas used to call me rabbit because I was so fast. I am the human embodiment of speed"],
 ["1. Are you sure that’s why\n2. Are rabbits even fast?"],
 [2, "For someone who looks so slow, you sure seem cocky. Try and keep up"],
 ["*You try and keep up. He is too fast and you get stuck in the crowd again*"]
@@ -65,9 +65,9 @@ var infoBool = [false,   false,     false,   false,   false,    false,    false,
 var infoValues = ["Jakobius Inglewood",
 				  "Professsional Runner",
 				  "4.3 Million USD",
-				  "Norway",
-				  "He was the first highschooler to run a sub-4 mile. Did it when he was 16.",
-				  "He was almost disqualified at Doha World Championships 2019",
+				  "Arkansas",
+				  "Fastest kid in his state, ran sub-4 in high school.",
+				  "He was disqualified at the national championships.",
 				  "Rabbit",
 				  "Virgin",
 				  "Arrogant"]
@@ -77,6 +77,14 @@ var infoLabels = ["Name: ", "Occupation: ", "Net Worth: ", "Place of Origin: ", 
 
 func _ready():
 	$TextBox.changeText(lines[0][0][1])
+	$TextBox.changeName(infoValues[0])
+	$Tween.repeat = true
+	var p = $AnimatedSprite.position.y
+	$Tween.interpolate_property($AnimatedSprite, "position:y", 
+		p+20, p-20, 1.5, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($AnimatedSprite, "position:y", 
+		p-20, p+20, 1.5, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 1.5)
+	$Tween.start()
 	
 
 func showInfo():

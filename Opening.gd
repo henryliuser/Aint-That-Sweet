@@ -12,6 +12,10 @@ var w1 = 0
 var actualCounter = 0
 var frames = 0
 
+func _input(event):
+	if event.is_action_pressed('ui_cancel'):
+		get_tree().reload_current_scene()
+
 func _ready():
 	Global.hideHUD()
 	Character1.visible = false

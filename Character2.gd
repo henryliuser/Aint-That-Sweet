@@ -108,6 +108,13 @@ var infoLabels = ["Name: ", "Occupation: ", "Net Worth: ", "Place of Origin: ", 
 func _ready():
 	$TextBox.changeText(lines[0][0][1])
 	$TextBox.changeName(infoValues[0])
+	$Tween.repeat = true
+	var p = $AnimatedSprite.position.y
+	$Tween.interpolate_property($AnimatedSprite, "position:y", 
+		p+20, p-20, 1.5, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($AnimatedSprite, "position:y", 
+		p-20, p+20, 1.5, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 1.5)
+	$Tween.start()
 
 func showInfo():
 	if bigProgress == 1:

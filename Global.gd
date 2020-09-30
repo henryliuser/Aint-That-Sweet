@@ -98,4 +98,7 @@ func updateWeek():
 	if muney <= 0:
 		updateHealth(-30)
 	get_tree().change_scene("res://menu.tscn")
-	
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_end"):
+		get_tree().quit()

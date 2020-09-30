@@ -20,6 +20,9 @@ margin_top = 650.0
 margin_right = -160.0
 margin_bottom = -80.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Name" type="RichTextLabel" parent="."]
 margin_left = 369.185
@@ -57,3 +60,5 @@ In entirely be to at settling felicity. Fruit two match men you seven share. Nee
 Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it. Farther be chapter at visited married in it pressed. By distrusts procuring be oh frankness existence believing instantly if. Doubtful on an juvenile as of servants insisted. Judge why maids led sir whose guest drift her point. Him comparison especially friendship was who sufficient attachment favourable how. Luckily but minutes ask picture man perhaps are inhabit. How her good all sang more why. 
 
 "
+
+[node name="Tween" type="Tween" parent="."]
